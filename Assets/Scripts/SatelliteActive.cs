@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SatelliteActive : MonoBehaviour
 {
+    public Transform player;
     public Animator anim;
     // Start is called before the first frame update
     void Start()
@@ -14,7 +15,7 @@ public class SatelliteActive : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E))
+        if((player.transform.position - this.transform.position).sqrMagnitude < 100) // && Input.GetKeyDown(KeyCode.E))
         {
             anim.Play("Extend");
         }
