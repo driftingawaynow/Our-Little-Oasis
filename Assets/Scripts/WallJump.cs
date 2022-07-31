@@ -79,7 +79,8 @@ public class WallJump : MonoBehaviour
     {
         Vector3 wallNormal = wallRight ? rightWallhit.normal : leftWallhit.normal;
 
-        Vector3 forceToApply = transform.up * wallJumpUpForce + wallNormal * wallJumpSideForce;
+        Vector3 forceToApply = transform.up * wallJumpUpForce + (wallNormal * wallJumpSideForce);
+        Debug.Log(forceToApply);
 
         // reset y velocity and add force
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);

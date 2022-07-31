@@ -177,7 +177,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
         {
             state = MovementState.walking;
             desiredMoveSpeed = walkSpeed;
-            Debug.Log(rb.velocity.magnitude);
+            //Debug.Log(rb.velocity.magnitude);
             if(rb.velocity.magnitude > 1) 
             {
                 cam.DoTilt(Mathf.Cos(Time.time * frequency) * amplitude);
