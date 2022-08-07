@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class WallJump : MonoBehaviour
 {
@@ -80,6 +81,7 @@ public class WallJump : MonoBehaviour
         Vector3 wallNormal = wallRight ? rightWallhit.normal : leftWallhit.normal;
 
         Vector3 forceToApply = transform.up * wallJumpUpForce + (wallNormal * wallJumpSideForce);
+        forceToApply = Vector3.ClampMagnitude(forceToApply, 10);
         Debug.Log(forceToApply);
 
         // reset y velocity and add force
