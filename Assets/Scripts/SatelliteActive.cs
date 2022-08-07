@@ -6,6 +6,7 @@ public class SatelliteActive : MonoBehaviour
 {
     public Transform player;
     public Animator anim;
+    bool once = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +19,16 @@ public class SatelliteActive : MonoBehaviour
         if((player.transform.position - this.transform.position).sqrMagnitude < 100) // && Input.GetKeyDown(KeyCode.E))
         {
             anim.Play("Extend");
+            if(once)
+            {
+                incrementScore();
+            }
         }
+    }
+
+    void incrementScore()
+    {
+        EnablePortal.score += 1;
+        once = false;
     }
 }

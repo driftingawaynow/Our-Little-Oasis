@@ -20,12 +20,12 @@ public class PortalTeleporter : MonoBehaviour
         {
             Vector3 portalToPlayer = player.position - transform.position;
             float dotProduct = Vector3.Dot(transform.up, portalToPlayer);
-            //Debug.Log(dotProduct);
-            Debug.Log(player.position);
+            Debug.Log(dotProduct);
+            //Debug.Log(player.position);
             float tempX = player.position.x;
             float tempY = player.position.y;
             float tempZ = player.position.z;
-            if(dotProduct < 1f)
+            if(dotProduct > 0f)
             {
                 // Teleport
                 float rotationDiff = -Quaternion.Angle(transform.rotation, receiver.rotation);
@@ -39,7 +39,7 @@ public class PortalTeleporter : MonoBehaviour
                 p.y = tempY;
                 p.z = tempZ + 2273f;
                 player.position = p;
-                Debug.Log(player.position);
+                //Debug.Log(player.position);
 
                 playerIsOverlapping = false;
             }

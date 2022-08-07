@@ -19,6 +19,7 @@ public class WallJump : MonoBehaviour
     [Header("Detection")]
     public float wallCheckDistance;
     public float minJumpHeight;
+    public float forceClamp;
     private RaycastHit leftWallhit;
     private RaycastHit rightWallhit;
     private bool wallLeft;
@@ -81,7 +82,7 @@ public class WallJump : MonoBehaviour
         Vector3 wallNormal = wallRight ? rightWallhit.normal : leftWallhit.normal;
 
         Vector3 forceToApply = transform.up * wallJumpUpForce + (wallNormal * wallJumpSideForce);
-        forceToApply = Vector3.ClampMagnitude(forceToApply, 10);
+        forceToApply = Vector3.ClampMagnitude(forceToApply, forceClamp);
         Debug.Log(forceToApply);
 
         // reset y velocity and add force
