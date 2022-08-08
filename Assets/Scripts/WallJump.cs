@@ -35,6 +35,8 @@ public class WallJump : MonoBehaviour
     private PlayerMovementAdvanced pm;
     private Rigidbody rb;
 
+    public static bool isWallJumping = false;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -73,7 +75,11 @@ public class WallJump : MonoBehaviour
         if((wallLeft || wallRight) && verticalInput > 0 && AboveGround())
         {
             // wall jump
-            if (Input.GetKeyDown(jumpKey)) Wall_Jump();
+            if (Input.GetKeyDown(jumpKey))
+            {
+                isWallJumping = true;
+                Wall_Jump();
+            }
         }
     }
 

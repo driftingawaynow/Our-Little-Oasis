@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnablePortal : MonoBehaviour
 {
     public MeshRenderer mesh;
-    public MeshCollider collider;
+    public MeshCollider mCollider;
     public Terrain terrain;
     public static int score = 0;
 
@@ -22,7 +22,7 @@ public class EnablePortal : MonoBehaviour
         {
             mesh.enabled = true;
             terrain.enabled = true;
-            collider.enabled = true;
+            mCollider.enabled = true;
         }
     }
 }

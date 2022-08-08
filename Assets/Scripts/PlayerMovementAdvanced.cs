@@ -57,9 +57,9 @@ public class PlayerMovementAdvanced : MonoBehaviour
 
     Vector3 moveDirection;
 
-    Rigidbody rb;
+    static Rigidbody rb;
 
-    public MovementState state;
+    public static MovementState state;
     public enum MovementState
     {
         walking,
