@@ -88,7 +88,10 @@ public class WallJump : MonoBehaviour
         Vector3 wallNormal = wallRight ? rightWallhit.normal : leftWallhit.normal;
 
         Vector3 forceToApply = transform.up * wallJumpUpForce + (wallNormal * wallJumpSideForce);
-        forceToApply = Vector3.ClampMagnitude(forceToApply, forceClamp);
+        if(forceToApply.y >= forceClamp)
+        {
+            forceToApply.y = forceClamp;
+        }
         Debug.Log(forceToApply);
 
         // reset y velocity and add force

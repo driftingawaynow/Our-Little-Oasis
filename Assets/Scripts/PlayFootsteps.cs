@@ -8,6 +8,7 @@ public class PlayFootsteps : MonoBehaviour
     public AudioClip[] rockClips;
     public AudioClip[] tileClips;
     public AudioClip[] wallClips;
+    public AudioClip[] waterClips;
     public AudioSource audioSource;
     private RaycastHit hit;
     private string floorTag;
@@ -22,11 +23,11 @@ public class PlayFootsteps : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //Debug.Log(onWater);
         if(Physics.Raycast(transform.position, Vector3.down, out hit))
         {
             floorTag = hit.collider.tag;
-            //Debug.Log(floorTag);
+            Debug.Log(floorTag);
         }
         //Debug.Log(PlayerMovementAdvanced.state);
         if(PlayerMovementAdvanced.state.ToString() == "walking" && rb.velocity.magnitude > 2)
@@ -42,6 +43,9 @@ public class PlayFootsteps : MonoBehaviour
                 case "Tile":
                     playFootsteps(tileClips, 0.6f);
                     break;
+                case "Water":
+                    playFootsteps(waterClips, 0.6f);
+                    break;
             }
         }
         if(PlayerMovementAdvanced.state.ToString() == "sprinting")
@@ -56,6 +60,9 @@ public class PlayFootsteps : MonoBehaviour
                     break;
                 case "Tile":
                     playFootsteps(tileClips, 0.4f);
+                    break;
+                case "Water":
+                    playFootsteps(waterClips, 0.4f);
                     break;
             }
         }

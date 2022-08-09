@@ -20,7 +20,7 @@ public class PortalTeleporter : MonoBehaviour
         {
             Vector3 portalToPlayer = player.position - transform.position;
             float dotProduct = Vector3.Dot(transform.up, portalToPlayer);
-            Debug.Log(dotProduct);
+            //Debug.Log(dotProduct);
             //Debug.Log(player.position);
             float tempX = player.position.x;
             float tempY = player.position.y;
@@ -50,7 +50,7 @@ public class PortalTeleporter : MonoBehaviour
     {
         if(other.tag == "Player") {
             playerIsOverlapping = true;
-            Debug.Log("Overlap");
+            //Debug.Log("Overlap");
         }
     }
 

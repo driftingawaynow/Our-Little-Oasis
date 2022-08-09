@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnablePortal : MonoBehaviour
 {
+    public Transform player;
     public MeshRenderer mesh;
     public MeshCollider mCollider;
     public Terrain terrain;
@@ -18,11 +19,14 @@ public class EnablePortal : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(score == 3) 
+        if((player.transform.position - this.transform.position).sqrMagnitude < 500)
         {
-            mesh.enabled = true;
-            terrain.enabled = true;
-            mCollider.enabled = true;
+            if(score == 0) 
+            {
+                mesh.enabled = true;
+                terrain.enabled = true;
+                mCollider.enabled = true;
+            }
         }
     }
 }

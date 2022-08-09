@@ -6,6 +6,8 @@ using System;
 public class PortalCamera : MonoBehaviour
 {
     public Transform playerCam;
+    public Camera playerCamera;
+    public Camera otherCamera;
     public Transform portal;
     public Transform otherPortal;
 
@@ -18,10 +20,11 @@ public class PortalCamera : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
+        otherCamera.fieldOfView = playerCamera.fieldOfView;
         Vector3 p = transform.position;
         Vector3 playerOffsetFromPortal = playerCam.position - otherPortal.position;
         p = portal.position + playerOffsetFromPortal;
-        p.y += 0.5f;
+        //p.y += 0.5f;
         transform.position = p;
 
         float portalAngularDifference = Quaternion.Angle(portal.rotation, otherPortal.rotation);
