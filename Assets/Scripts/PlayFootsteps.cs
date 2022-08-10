@@ -27,7 +27,7 @@ public class PlayFootsteps : MonoBehaviour
         if(Physics.Raycast(transform.position, Vector3.down, out hit))
         {
             floorTag = hit.collider.tag;
-            Debug.Log(floorTag);
+            //Debug.Log(floorTag);
         }
         //Debug.Log(PlayerMovementAdvanced.state);
         if(PlayerMovementAdvanced.state.ToString() == "walking" && rb.velocity.magnitude > 2)
@@ -35,15 +35,19 @@ public class PlayFootsteps : MonoBehaviour
             switch(floorTag)
             {
                 case "Sand":
+                    audioSource.volume = 1f;
                     playFootsteps(sandClips, 0.6f);
                     break;
                 case "Rock":
+                    audioSource.volume = 1f;
                     playFootsteps(rockClips, 0.6f);
                     break;
                 case "Tile":
+                    audioSource.volume = 1f;
                     playFootsteps(tileClips, 0.6f);
                     break;
                 case "Water":
+                    audioSource.volume = 0.5f;
                     playFootsteps(waterClips, 0.6f);
                     break;
             }
@@ -53,15 +57,19 @@ public class PlayFootsteps : MonoBehaviour
             switch(floorTag)
             {
                 case "Sand":
+                    audioSource.volume = 1f;
                     playFootsteps(sandClips, 0.4f);
                     break;
                 case "Rock":
+                    audioSource.volume = 1f;
                     playFootsteps(rockClips, 0.4f);
                     break;
                 case "Tile":
+                    audioSource.volume = 1f;
                     playFootsteps(tileClips, 0.4f);
                     break;
                 case "Water":
+                    audioSource.volume = 0.5f;
                     playFootsteps(waterClips, 0.4f);
                     break;
             }

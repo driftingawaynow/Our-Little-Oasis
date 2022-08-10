@@ -17,7 +17,18 @@ public class SatelliteActive : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if((player.transform.position - this.transform.position).sqrMagnitude < 100) // && Input.GetKeyDown(KeyCode.E))
+        
+    }
+
+    void incrementScore()
+    {
+        EnablePortal.score += 1;
+        once = false;
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Player")
         {
             if(once)
             {
@@ -26,11 +37,5 @@ public class SatelliteActive : MonoBehaviour
                 incrementScore();
             }
         }
-    }
-
-    void incrementScore()
-    {
-        EnablePortal.score += 1;
-        once = false;
     }
 }
