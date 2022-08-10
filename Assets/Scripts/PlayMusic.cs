@@ -16,7 +16,7 @@ public class PlayMusic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(timeOut);
+        //Debug.Log(timeOut);
         if(timeOut > 0f)
         {
             timeOut -= 3f * Time.deltaTime;
@@ -31,7 +31,7 @@ public class PlayMusic : MonoBehaviour
             else
             {
                 float newVolume = music.volume - (0.1f * Time.deltaTime);  //change 0.01f to something else to adjust the rate of the volume dropping
-                Debug.Log("doing shit");
+                //Debug.Log("doing shit");
                 if (newVolume < 0f)
                 {
                     newVolume = 0f;

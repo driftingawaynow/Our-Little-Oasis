@@ -19,14 +19,11 @@ public class EnablePortal : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if((player.transform.position - this.transform.position).sqrMagnitude < 500)
+        if(score == 0) 
         {
-            if(score == 0) 
-            {
                 mesh.enabled = true;
                 terrain.enabled = true;
                 mCollider.enabled = true;
-            }
         }
     }
 }
