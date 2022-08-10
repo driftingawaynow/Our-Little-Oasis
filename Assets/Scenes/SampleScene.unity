@@ -2262,7 +2262,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: d5eeac5cbccc0644893d709daecc65fa,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.5878617
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d5eeac5cbccc0644893d709daecc65fa,
         type: 3}
@@ -23008,15 +23008,17 @@ MonoBehaviour:
   textComp: {fileID: 1576353783}
   lines:
   - welcome, traveler.
+  - i knew you would make it.
+  - no data to glean here, unfortunately.
   - this one collapsed long, long ago.
   - i thought i could turn it into something new.
-  - it's beautiful here, isn't it?
+  - they would've liked that.
   - our own little sanctuary.
-  - if you do choose to stay.
-  - you're the first to arrive.
+  - anyways, you're the first to arrive.
   - i hope the others aren't lost.
   - did you see them along the way?
   - oh, well.
+  - i guess they're off climbing their own towers.
   - you're welcome to stay as long as you'd like.
   - 'rest easy now, traveler. '
   textSpeed: 0.03

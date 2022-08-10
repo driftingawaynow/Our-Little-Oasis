@@ -7,6 +7,12 @@ public class PortalTeleporter : MonoBehaviour
     public Transform player;
     public Transform receiver;
     private bool playerIsOverlapping = false;
+    private float dotProduct = 0f;
+    private float tempX = 0f;
+    private float tempY = 0f;
+    private float tempZ = 0f;
+    private Vector3 portalToPlayer;
+    private float timer = 1f;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,14 +24,15 @@ public class PortalTeleporter : MonoBehaviour
     {
         if(playerIsOverlapping)
         {
-            Vector3 portalToPlayer = player.position - transform.position;
-            float dotProduct = Vector3.Dot(transform.up, portalToPlayer);
+            playerIsOverlapping = false;
+            portalToPlayer = player.position - transform.position;
+            dotProduct = Vector3.Dot(transform.forward, portalToPlayer);
             Debug.Log(dotProduct);
             //Debug.Log(player.position);
-            float tempX = player.position.x;
-            float tempY = player.position.y;
-            float tempZ = player.position.z;
-            if(dotProduct >= 0f)
+            tempX = player.position.x;
+            tempY = player.position.y;
+            tempZ = player.position.z;
+            if(dotProduct > 0f)
             {
                 // Teleport
                 float rotationDiff = -Quaternion.Angle(transform.rotation, receiver.rotation);
@@ -44,11 +51,16 @@ public class PortalTeleporter : MonoBehaviour
                 playerIsOverlapping = false;
             }
         }
+
+        if(timer > 0f)
+        {
+            timer -= 0.5f * Time.deltaTime;
+        }
     }
 
     void OnTriggerEnter (Collider other) 
     {
-        if(other.tag == "Player") {
+        if(other.tag == "Player" && timer <= 0f) {
             playerIsOverlapping = true;
             //Debug.Log("Overlap");
         }
