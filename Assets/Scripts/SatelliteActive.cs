@@ -20,8 +20,9 @@ public class SatelliteActive : MonoBehaviour
         
     }
 
-    void incrementScore()
+    IEnumerator incrementScore()
     {
+        yield return new WaitForSeconds(15);
         EnablePortal.score += 1;
         once = false;
     }
@@ -34,7 +35,7 @@ public class SatelliteActive : MonoBehaviour
             {
                 anim.Play("Extend");
                 source.Play();
-                incrementScore();
+                StartCoroutine(incrementScore());
             }
         }
     }
