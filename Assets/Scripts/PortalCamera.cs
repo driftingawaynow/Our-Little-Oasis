@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using DG.Tweening;
 
 public class PortalCamera : MonoBehaviour
 {
@@ -21,15 +22,20 @@ public class PortalCamera : MonoBehaviour
     void LateUpdate()
     {
         otherCamera.fieldOfView = playerCamera.fieldOfView;
+        this.transform.eulerAngles = playerCamera.transform.eulerAngles;
         Vector3 p = transform.position;
         Vector3 playerOffsetFromPortal = playerCam.position - otherPortal.position;
         p = portal.position + playerOffsetFromPortal;
-        //p.y += 0.5f;
         transform.position = p;
 
-        float portalAngularDifference = Quaternion.Angle(portal.rotation, otherPortal.rotation);
-        Quaternion portalRotationDifference = Quaternion.AngleAxis(portalAngularDifference, Vector3.up);
-        Vector3 newCameraDirection = portalRotationDifference * playerCam.forward;
-        transform.rotation = Quaternion.LookRotation(newCameraDirection, Vector3.up);
+        //float portalAngularDifference = Quaternion.Angle(portal.rotation, otherPortal.rotation);
+        //Quaternion portalRotationDifference = Quaternion.AngleAxis(portalAngularDifference, Vector3.up);
+        //Vector3 newCameraDirection = portalRotationDifference * playerCam.forward;
+        //transform.rotation = Quaternion.LookRotation(newCameraDirection, Vector3.up);
+    }
+
+    public void DoPortalTilt(float zTilt)
+    {
+        transform.DOLocalRotate(new Vector3(0, 0, zTilt), 0.25f);
     }
 }

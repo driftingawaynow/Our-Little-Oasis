@@ -51,6 +51,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
     public float frequency;
     public Transform orientation;
     public PlayerCam cam;
+    public PortalCamera cam2;
 
     float horizontalInput;
     float verticalInput;
@@ -149,6 +150,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
             if (OnSlope() && rb.velocity.y < 0.1f) {
                 desiredMoveSpeed = slideSpeed;
                 cam.DoTilt(5f);
+                cam2.DoPortalTilt(5f);
             }
             else
                 desiredMoveSpeed = sprintSpeed;
@@ -169,6 +171,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
             if(rb.velocity.magnitude > 1) 
             {
                 cam.DoTilt(Mathf.Cos(Time.time * frequency * 1.5f) * amplitude * 1.5f);
+                cam2.DoPortalTilt(Mathf.Cos(Time.time * frequency * 1.5f) * amplitude * 1.5f);
             }
         }
 
@@ -181,6 +184,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
             if(rb.velocity.magnitude > 1) 
             {
                 cam.DoTilt(Mathf.Cos(Time.time * frequency) * amplitude);
+                cam2.DoPortalTilt(Mathf.Cos(Time.time * frequency) * amplitude);
             }
         }
 
