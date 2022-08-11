@@ -7,6 +7,7 @@ public class SatelliteActive : MonoBehaviour
     public Transform player;
     public Animator anim;
     public AudioSource source;
+    public Collider col;
     bool once = true;
     // Start is called before the first frame update
     void Start()
@@ -33,6 +34,7 @@ public class SatelliteActive : MonoBehaviour
         {
             if(once)
             {
+                col.enabled = false;
                 anim.Play("Extend");
                 source.Play();
                 StartCoroutine(incrementScore());

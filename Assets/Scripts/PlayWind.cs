@@ -29,10 +29,8 @@ public class PlayWind : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Enter");
         if(other.tag == "Player")
         {
-            Debug.Log("bruh?");
             louder = false;
             quieter = true;
         }
