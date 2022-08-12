@@ -33,8 +33,8 @@ public class PlayerCam : MonoBehaviour
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
         // rotate cam and orientation
-        camHolder.rotation = Quaternion.Euler(xRotation, yRotation, 0);
-        orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+        camHolder.rotation = Quaternion.Euler(xRotation, yRotation - 90, 0);
+        orientation.rotation = Quaternion.Euler(0, yRotation - 90, 0);
     }
 
     public void DoFov(float endValue)

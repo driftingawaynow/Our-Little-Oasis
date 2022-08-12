@@ -21,7 +21,7 @@ public class EnablePortal : MonoBehaviour
     private bool playOnce3 = true;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         
     }
@@ -29,9 +29,10 @@ public class EnablePortal : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("e"))
+        score = PlayerPrefs.GetInt("Score");
+        if (Input.GetKeyDown("f1") && (Input.GetKeyDown("e")))
         {
-            score += 1;
+            PlayerPrefs.SetInt("Score", (score + 1));
         }
         if(score == 1)
         {

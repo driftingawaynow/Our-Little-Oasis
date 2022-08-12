@@ -20,6 +20,10 @@ public class EnablePortalMenu : MonoBehaviour
         {
             PlayerPrefs.SetInt("EndScreen", 0);
         }
+        if(!PlayerPrefs.HasKey("Score"))
+        {
+            PlayerPrefs.SetInt("Score", 0);
+        }
     }
 
     // Update is called once per frame

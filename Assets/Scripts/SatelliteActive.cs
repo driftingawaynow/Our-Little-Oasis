@@ -8,23 +8,28 @@ public class SatelliteActive : MonoBehaviour
     public Animator anim;
     public AudioSource source;
     public Collider col;
-    bool once = true;
+    private bool once = true;
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
+        if(!PlayerPrefs.HasKey("Score"))
+        {
+            PlayerPrefs.SetInt("Score", 0);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        Debug.Log(PlayerPrefs.GetInt("Score"));
     }
 
     IEnumerator incrementScore()
     {
         yield return new WaitForSeconds(15);
-        EnablePortal.score += 1;
+        int temp = PlayerPrefs.GetInt("Score") + 1;
+        PlayerPrefs.SetInt("Score", temp);
         once = false;
     }
 

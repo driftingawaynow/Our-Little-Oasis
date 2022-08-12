@@ -258,7 +258,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
 
         // turn gravity off while on slope
-        if (!wallrunning) 
+        if (!grounded) 
         {
             rb.useGravity = !OnSlope();
         }

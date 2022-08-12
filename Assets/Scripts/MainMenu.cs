@@ -9,7 +9,8 @@ public class MainMenu : MonoBehaviour
     List<int> heights = new List<int>() {320, 540, 800, 1080}; 
     public void StartGame()
     {
-        PlayerPrefs.DeleteAll();
+        PlayerPrefs.SetInt("Score", 0);
+        PlayerPrefs.SetInt("EndScreen", 0);
         SceneManager.LoadScene("Game");
     }
 
