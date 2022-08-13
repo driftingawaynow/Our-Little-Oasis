@@ -13,17 +13,22 @@ public class Dialogue : MonoBehaviour
     public float textSpeed;
     private int index = 0;
     private float timer = 5f;
+    private bool once = true;
 
     // Start is called before the first frame update
     void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player")
         {
-            StartCoroutine(typeLine());
+            if(once)
+            {
+                once = false;
+                StartCoroutine(typeLine());
+            }
         }
     }
 
-    void Start()
+    void Awake()
     {
         textComp.text = string.Empty;
     }
@@ -31,6 +36,8 @@ public class Dialogue : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log(textComp.text);
+        //Debug.Log(lines[index]);
         if(textComp.text == lines[index])
         {
             timer -= 1f * Time.deltaTime;
@@ -44,9 +51,11 @@ public class Dialogue : MonoBehaviour
 
     IEnumerator typeLine()
     {
+        //Debug.Log(lines[0].ToCharArray());
         foreach (char c in lines[index].ToCharArray())
         {
             tick.Play();
+            Debug.Log(c);
             textComp.text += c;
             yield return new WaitForSeconds(textSpeed);
         }

@@ -40,7 +40,7 @@ public class PortalHint : MonoBehaviour
     {
         intensity += 1f * Time.deltaTime;
         glow.SetColor("_EmissionColor", new Color(1.0f,1.0f,1.0f,1.0f) * intensity);
-        Debug.Log(intensity);
+        //Debug.Log(intensity);
         if(intensity >= 1)
         {
             fadeInBool = false;
@@ -53,7 +53,7 @@ public class PortalHint : MonoBehaviour
     {
         intensity -= 1f * Time.deltaTime;
         glow.SetColor("_EmissionColor", new Color(1.0f,1.0f,1.0f,1.0f) * intensity);
-        Debug.Log(intensity);
+        //Debug.Log(intensity);
         if(intensity <= 0)
         {
             fadeOutBool = false;
