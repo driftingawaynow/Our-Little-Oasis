@@ -11,6 +11,7 @@ public class MainMenu : MonoBehaviour
     {
         PlayerPrefs.SetInt("Score", 0);
         PlayerPrefs.SetInt("EndScreen", 0);
+        PlayerPrefs.SetString("Checkpoint", "(0.0, 0.0, 0.0)");
         SceneManager.LoadScene("Game");
     }
 

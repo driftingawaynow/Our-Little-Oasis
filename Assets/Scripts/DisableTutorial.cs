@@ -13,7 +13,7 @@ public class DisableTutorial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(EnablePortal.score >= 1)
+        if(PlayerPrefs.GetInt("Score") >= 1)
         {
             gameObject.SetActive(false);
         }

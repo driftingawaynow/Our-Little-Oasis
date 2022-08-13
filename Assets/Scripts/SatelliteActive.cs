@@ -22,7 +22,7 @@ public class SatelliteActive : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(PlayerPrefs.GetInt("Score"));
+        //Debug.Log(PlayerPrefs.GetInt("Score"));
     }
 
     IEnumerator incrementScore()
