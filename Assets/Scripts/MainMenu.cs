@@ -37,17 +37,4 @@ public class MainMenu : MonoBehaviour
     {
         
     }
-
-    public void SetScreenSize(int index)
-    {
-        bool fullscreen = Screen.fullScreen;
-        int width = widths[index];
-        int height = heights[index];
-        Screen.SetResolution(width, height, fullscreen);
-    }
-
-    public void setFullscreen(bool _fullscreen)
-    {
-        Screen.fullScreen = _fullscreen;
-    }
 }

@@ -21,21 +21,27 @@ public class PortalCamera : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        otherCamera.fieldOfView = playerCamera.fieldOfView;
-        this.transform.eulerAngles = playerCamera.transform.eulerAngles;
-        Vector3 p = transform.position;
-        Vector3 playerOffsetFromPortal = playerCam.position - otherPortal.position;
-        p = portal.position + playerOffsetFromPortal;
-        transform.position = p;
+        if(!PauseMenu.paused)
+        {
+            otherCamera.fieldOfView = playerCamera.fieldOfView;
+            this.transform.eulerAngles = playerCamera.transform.eulerAngles;
+            Vector3 p = transform.position;
+            Vector3 playerOffsetFromPortal = playerCam.position - otherPortal.position;
+            p = portal.position + playerOffsetFromPortal;
+            transform.position = p;
 
-        //float portalAngularDifference = Quaternion.Angle(portal.rotation, otherPortal.rotation);
-        //Quaternion portalRotationDifference = Quaternion.AngleAxis(portalAngularDifference, Vector3.up);
-        //Vector3 newCameraDirection = portalRotationDifference * playerCam.forward;
-        //transform.rotation = Quaternion.LookRotation(newCameraDirection, Vector3.up);
+            //float portalAngularDifference = Quaternion.Angle(portal.rotation, otherPortal.rotation);
+            //Quaternion portalRotationDifference = Quaternion.AngleAxis(portalAngularDifference, Vector3.up);
+            //Vector3 newCameraDirection = portalRotationDifference * playerCam.forward;
+            //transform.rotation = Quaternion.LookRotation(newCameraDirection, Vector3.up);
+        }
     }
 
     public void DoPortalTilt(float zTilt)
     {
-        transform.DOLocalRotate(new Vector3(0, 0, zTilt), 0.25f);
+        if(!PauseMenu.paused)
+        {
+            transform.DOLocalRotate(new Vector3(0, 0, zTilt), 0.25f);
+        }
     }
 }

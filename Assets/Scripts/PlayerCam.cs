@@ -19,31 +19,44 @@ public class PlayerCam : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        if(!PlayerPrefs.HasKey("sens"))
+        {
+            PlayerPrefs.SetFloat("sens", 100);
+        }
     }
 
     private void Update()
     {
-        // get mouse input
-        float mouseX = Input.GetAxisRaw("Mouse X") * Time.fixedDeltaTime * sensX;
-        float mouseY = Input.GetAxisRaw("Mouse Y") * Time.fixedDeltaTime * sensY;
+        if(!PauseMenu.paused)
+        {
+            // get mouse input
+            float mouseX = Input.GetAxisRaw("Mouse X") * Time.fixedDeltaTime * PlayerPrefs.GetFloat("sens");
+            float mouseY = Input.GetAxisRaw("Mouse Y") * Time.fixedDeltaTime * PlayerPrefs.GetFloat("sens");
 
-        yRotation += mouseX;
+            yRotation += mouseX;
 
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+            xRotation -= mouseY;
+            xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
-        // rotate cam and orientation
-        camHolder.rotation = Quaternion.Euler(xRotation, yRotation - 90, 0);
-        orientation.rotation = Quaternion.Euler(0, yRotation - 90, 0);
+            // rotate cam and orientation
+            camHolder.rotation = Quaternion.Euler(xRotation, yRotation - 90, 0);
+            orientation.rotation = Quaternion.Euler(0, yRotation - 90, 0);
+        }
     }
 
     public void DoFov(float endValue)
     {
-        GetComponent<Camera>().DOFieldOfView(endValue, 0.25f);
+        if(!PauseMenu.paused)
+        {
+            GetComponent<Camera>().DOFieldOfView(endValue, 0.25f);
+        }
     }
 
     public void DoTilt(float zTilt)
     {
-        transform.DOLocalRotate(new Vector3(0, 0, zTilt), 0.25f);
+        if(!PauseMenu.paused)
+        {
+            transform.DOLocalRotate(new Vector3(0, 0, zTilt), 0.25f);
+        }
     }
 }
