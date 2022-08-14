@@ -9,10 +9,6 @@ public class Checkpoint : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(!PlayerPrefs.HasKey("Checkpoint"))
-        {
-           PlayerPrefs.SetString("Checkpoint", "(0.0, 0.0, 0.0)");
-        }
     }
 
     // Update is called once per frame
@@ -42,7 +38,6 @@ public class Checkpoint : MonoBehaviour
         if(other.tag == "Player")
         {
             PlayerPrefs.SetString("Checkpoint", transform.position.ToString());
-            //Debug.Log(PlayerPrefs.GetString("Checkpoint"));
         }
     }
 }

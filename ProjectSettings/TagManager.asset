@@ -9,6 +9,9 @@ TagManager:
   - Tile
   - Water
   - Music
+  - West
+  - East
+  - North
   layers:
   - Default
   - TransparentFX

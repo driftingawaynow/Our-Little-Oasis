@@ -15,10 +15,13 @@ public class EnablePortal : MonoBehaviour
     public AudioSource audio1;
     public AudioSource audio2;
     public AudioSource audio3;
-    public static int score = 0;
+    private int east = 0;
+    private int north = 0;
+    private int west = 0;
     private bool playOnce1 = true;
     private bool playOnce2 = true;
     private bool playOnce3 = true;
+    private bool playOnce4 = true;
 
     // Start is called before the first frame update
     void Awake()
@@ -29,39 +32,42 @@ public class EnablePortal : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        score = PlayerPrefs.GetInt("Score");
+        west = PlayerPrefs.GetInt("WestActive");
+        north = PlayerPrefs.GetInt("NorthActive");
+        east = PlayerPrefs.GetInt("EastActive");
+
         if (Input.GetKeyDown("f1") && (Input.GetKeyDown("e")))
         {
-            PlayerPrefs.SetInt("Score", (score + 1));
+            PlayerPrefs.SetInt("WestActive", 1);
+            PlayerPrefs.SetInt("NorthActive", 1);
+            PlayerPrefs.SetInt("EastActive", 1);
         }
-        if(score == 1)
+
+        if(east == 1 && playOnce1)
         {
+            playOnce1 = false;
             left.GetComponent<MeshRenderer>().material = mat;
-            if(playOnce1)
-            {
-                audio1.Play();
-                playOnce1 = false;
-            }
+            audio1.Play();
         }
 
-        if(score == 2)
+        if(north == 1 && playOnce2)
         {
+            playOnce2 = false;
             middle.GetComponent<MeshRenderer>().material = mat;
-            if(playOnce2)
-            {
-                audio2.Play();
-                playOnce2 = false;
-            }
+            audio1.Play();
         }
 
-        if(score == 3) 
+        if(west == 1 && playOnce3) 
         {
+            playOnce3 = false;
             right.GetComponent<MeshRenderer>().material = mat;
-            if(playOnce3)
-            {
-                audio3.Play();
-                playOnce3 = false;
-            }
+            audio1.Play();
+        }
+
+        if(west == 1 && north == 1 && east == 1 && playOnce4)
+        {
+            playOnce4 = false;
+            audio3.Play();
             mesh.enabled = true;
             terrain.enabled = true;
             mCollider.enabled = true;

@@ -19,10 +19,6 @@ public class PlayerCam : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        if(!PlayerPrefs.HasKey("sens"))
-        {
-            PlayerPrefs.SetFloat("sens", 100);
-        }
     }
 
     private void Update()

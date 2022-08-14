@@ -20,15 +20,26 @@ public class EnablePortalMenu : MonoBehaviour
         {
             PlayerPrefs.SetInt("EndScreen", 0);
         }
-        if(!PlayerPrefs.HasKey("Score"))
-        {
-            PlayerPrefs.SetInt("Score", 0);
-        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(PlayerPrefs.GetInt("WestActive") == 1)
+        {
+            right.GetComponent<MeshRenderer>().material = mat;
+        }
+
+        if(PlayerPrefs.GetInt("NorthActive") == 1)
+        {
+            middle.GetComponent<MeshRenderer>().material = mat;
+        }
+
+        if(PlayerPrefs.GetInt("EastActive") == 1)
+        {
+            left.GetComponent<MeshRenderer>().material = mat;
+        }
+
         if(PlayerPrefs.GetInt("EndScreen") == 1) 
         {
             left.GetComponent<MeshRenderer>().material = mat;

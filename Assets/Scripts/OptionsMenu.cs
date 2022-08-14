@@ -14,6 +14,7 @@ public class OptionsMenu : MonoBehaviour
     {
         sens.value = PlayerPrefs.GetFloat("sens");
     }
+    
     public void Options()
     {
 

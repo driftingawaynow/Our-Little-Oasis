@@ -13,7 +13,7 @@ public class DisableTutorial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(PlayerPrefs.GetInt("Score") >= 1)
+        if(PlayerPrefs.GetInt("WestActive") == 1 || PlayerPrefs.GetInt("NorthActive") == 1 || PlayerPrefs.GetInt("EastActive") == 1)
         {
             gameObject.SetActive(false);
         }

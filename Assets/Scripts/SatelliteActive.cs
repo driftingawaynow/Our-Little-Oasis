@@ -8,42 +8,61 @@ public class SatelliteActive : MonoBehaviour
     public Animator anim;
     public AudioSource source;
     public Collider col;
-    private bool once = true;
+    public ParticleSystem particles;
+
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
-        if(!PlayerPrefs.HasKey("Score"))
-        {
-            PlayerPrefs.SetInt("Score", 0);
-        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(PlayerPrefs.GetInt("Score"));
+        
     }
 
-    IEnumerator incrementScore()
+    IEnumerator enableParticles()
     {
-        yield return new WaitForSeconds(15);
-        int temp = PlayerPrefs.GetInt("Score") + 1;
-        PlayerPrefs.SetInt("Score", temp);
-        once = false;
+        yield return new WaitForSeconds(12);
+        particles.Play();
     }
 
     void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player")
         {
-            if(once)
+            switch(col.tag)
             {
-                col.enabled = false;
-                anim.Play("Extend");
-                source.Play();
-                StartCoroutine(incrementScore());
+                case "West":
+                    if(PlayerPrefs.GetInt("WestActive") != 1)
+                    {
+                        extendAnimation();
+                    }
+                    PlayerPrefs.SetInt("WestActive", 1);
+                    break;
+                case "North":
+                    if(PlayerPrefs.GetInt("NorthActive") != 1)
+                    {
+                        extendAnimation();
+                    }
+                    PlayerPrefs.SetInt("NorthActive", 1);
+                    break;
+                case "East":
+                    if(PlayerPrefs.GetInt("EastActive") != 1)
+                    {
+                        extendAnimation();
+                    }
+                    PlayerPrefs.SetInt("EastActive", 1);
+                    break;
             }
         }
+    }
+
+    public void extendAnimation()
+    {
+        anim.Play("Extend");
+        source.Play();
+        StartCoroutine(enableParticles());
     }
 }

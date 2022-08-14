@@ -10,46 +10,23 @@ public class SoundManager : MonoBehaviour
     [SerializeField] Slider sfxSlider;
     [SerializeField] private AudioMixer myAudioMixer;
     // Start is called before the first frame update
-    void Start()
-    {
-        if(!PlayerPrefs.HasKey("musicVolume") || !PlayerPrefs.HasKey("sfxVolume"))
-            if(!PlayerPrefs.HasKey("musicVolume"))
-            {
-                PlayerPrefs.SetFloat("musicVolume", 1);
-                Load();
-            }
-            if(!PlayerPrefs.HasKey("sfxVolume"))
-            {
-                PlayerPrefs.SetFloat("sfxVolume", 1);
-                Load();
-            }
-        else
-        {
-            Load();
-        }
-    }
 
     public void ChangeMusicVolume()
     {
         myAudioMixer.SetFloat("musicVolume", Mathf.Log10(musicSlider.value) * 50);
-        Save();
+        PlayerPrefs.SetFloat("musicVolume", musicSlider.value);
     }
 
     public void ChangeSFXVolume()
     {
         myAudioMixer.SetFloat("sfxVolume", Mathf.Log10(sfxSlider.value) * 50);
-        Save();
+        PlayerPrefs.SetFloat("sfxVolume", sfxSlider.value);
     }
 
-    private void Load()
+    public void Start()
     {
         musicSlider.value = PlayerPrefs.GetFloat("musicVolume");
         sfxSlider.value = PlayerPrefs.GetFloat("sfxVolume");
-    }
-
-    private void Save()
-    {
-        PlayerPrefs.SetFloat("musicVolume", musicSlider.value);
-        PlayerPrefs.SetFloat("sfxVolume", sfxSlider.value);
+        Debug.Log(PlayerPrefs.GetFloat("sfxVolume"));
     }
 }
