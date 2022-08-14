@@ -24,7 +24,7 @@ public class SatelliteActive : MonoBehaviour
 
     IEnumerator enableParticles()
     {
-        yield return new WaitForSeconds(12);
+        yield return new WaitForSeconds(13);
         particles.Play();
     }
 
