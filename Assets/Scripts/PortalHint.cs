@@ -8,6 +8,7 @@ public class PortalHint : MonoBehaviour
     private float intensity = 0f;
     private bool fadeInBool = false;
     private bool fadeOutBool = false;
+    public AudioSource audioS;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +34,7 @@ public class PortalHint : MonoBehaviour
         {
             glow.EnableKeyword ("_EMISSION");
             fadeInBool = true;
+            audioS.Play();
         }
     }
 

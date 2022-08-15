@@ -9,11 +9,34 @@ public class SatelliteActive : MonoBehaviour
     public AudioSource source;
     public Collider col;
     public ParticleSystem particles;
+    public AudioSource emitter;
 
     // Start is called before the first frame update
     void Start()
     {
-        anim = GetComponent<Animator>();
+        if(PlayerPrefs.GetInt("WestActive") == 1)
+        {
+            if(col.tag == "West")
+            {
+                extendAnimation(false);
+            }
+        }
+
+        if(PlayerPrefs.GetInt("NorthActive") == 1)
+        {
+            if(col.tag == "North")
+            {
+                extendAnimation(false);
+            }
+        }
+
+        if(PlayerPrefs.GetInt("EastActive") == 1)
+        {
+            if(col.tag == "East")
+            {
+                extendAnimation(false);
+            }
+        }
     }
 
     // Update is called once per frame
@@ -26,6 +49,7 @@ public class SatelliteActive : MonoBehaviour
     {
         yield return new WaitForSeconds(13);
         particles.Play();
+        emitter.Play();
     }
 
     void OnTriggerEnter(Collider other)
@@ -37,21 +61,21 @@ public class SatelliteActive : MonoBehaviour
                 case "West":
                     if(PlayerPrefs.GetInt("WestActive") != 1)
                     {
-                        extendAnimation();
+                        extendAnimation(true);
                     }
                     PlayerPrefs.SetInt("WestActive", 1);
                     break;
                 case "North":
                     if(PlayerPrefs.GetInt("NorthActive") != 1)
                     {
-                        extendAnimation();
+                        extendAnimation(true);
                     }
                     PlayerPrefs.SetInt("NorthActive", 1);
                     break;
                 case "East":
                     if(PlayerPrefs.GetInt("EastActive") != 1)
                     {
-                        extendAnimation();
+                        extendAnimation(true);
                     }
                     PlayerPrefs.SetInt("EastActive", 1);
                     break;
@@ -59,10 +83,13 @@ public class SatelliteActive : MonoBehaviour
         }
     }
 
-    public void extendAnimation()
+    public void extendAnimation(bool audio)
     {
         anim.Play("Extend");
-        source.Play();
+        if(audio)
+        {
+            source.Play();
+        }
         StartCoroutine(enableParticles());
     }
 }
