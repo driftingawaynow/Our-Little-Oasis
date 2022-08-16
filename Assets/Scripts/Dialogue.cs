@@ -78,7 +78,7 @@ public class Dialogue : MonoBehaviour
     IEnumerator MainMenuSwitch()
     {   
         Debug.Log("Entering");
-        yield return new WaitForSeconds(15);
+        yield return new WaitForSeconds(5);
         Debug.Log("Exiting");
         PlayerPrefs.SetInt("EndScreen", 1);
         SceneManager.LoadScene("Menu");

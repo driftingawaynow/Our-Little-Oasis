@@ -30,7 +30,7 @@ public class PortalHint : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+        if(other.tag == "Player" && (PlayerPrefs.GetInt("WestActive") == 0 || PlayerPrefs.GetInt("NorthActive") == 0 || PlayerPrefs.GetInt("EastActive") == 0))
         {
             glow.EnableKeyword ("_EMISSION");
             fadeInBool = true;
