@@ -7,16 +7,18 @@ public class PlayWind : MonoBehaviour
     public AudioSource wind;
     private bool louder = true;
     private bool quieter = false;
+
     // Start is called before the first frame update
     void Start()
     {
         wind.volume = 0f;
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// The volume of the wind is made quieter when indoors, and louder when outdoors
+    /// </summary>
     void Update()
     {
-        //Debug.Log(wind.volume);
         if(louder && (wind.volume < 0.1f))
         {
             wind.volume += 0.04f * Time.deltaTime;

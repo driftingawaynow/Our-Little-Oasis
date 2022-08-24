@@ -30,6 +30,7 @@ public class PortalHint : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        // if portal is not enabled, play hint
         if(other.tag == "Player" && (PlayerPrefs.GetInt("WestActive") == 0 || PlayerPrefs.GetInt("NorthActive") == 0 || PlayerPrefs.GetInt("EastActive") == 0))
         {
             glow.EnableKeyword ("_EMISSION");
@@ -38,11 +39,13 @@ public class PortalHint : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Smoothly fades in emissive material on each stone
+    /// </summary>
     IEnumerator glowFadeIn()
     {
         intensity += 1f * Time.deltaTime;
         glow.SetColor("_EmissionColor", new Color(1.0f,1.0f,1.0f,1.0f) * intensity);
-        //Debug.Log(intensity);
         if(intensity >= 1)
         {
             fadeInBool = false;
@@ -55,7 +58,6 @@ public class PortalHint : MonoBehaviour
     {
         intensity -= 1f * Time.deltaTime;
         glow.SetColor("_EmissionColor", new Color(1.0f,1.0f,1.0f,1.0f) * intensity);
-        //Debug.Log(intensity);
         if(intensity <= 0)
         {
             fadeOutBool = false;

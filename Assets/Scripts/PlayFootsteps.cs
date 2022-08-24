@@ -23,13 +23,13 @@ public class PlayFootsteps : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(onWater);
+        // check tag of surface below player
         if(Physics.Raycast(transform.position, Vector3.down, out hit))
         {
             floorTag = hit.collider.tag;
-            //Debug.Log(floorTag);
         }
-        //Debug.Log(PlayerMovementAdvanced.state);
+
+        // play footstep noise depending on surface and movement state
         if(PlayerMovementAdvanced.state.ToString() == "walking" && rb.velocity.magnitude > 2)
         {
             switch(floorTag)
@@ -52,6 +52,7 @@ public class PlayFootsteps : MonoBehaviour
                     break;
             }
         }
+
         if(PlayerMovementAdvanced.state.ToString() == "sprinting")
         {
             switch(floorTag)
@@ -74,6 +75,7 @@ public class PlayFootsteps : MonoBehaviour
                     break;
             }
         }
+
         if(WallJump.isWallJumping)
         {
             playFootsteps(wallClips, 0.5f);
@@ -82,6 +84,9 @@ public class PlayFootsteps : MonoBehaviour
         audioTimer += Time.deltaTime;
     }
 
+    /// <summary>
+    /// Plays random footstep sounds from specified array (depending on surface and movement state)
+    /// </summary>
     void playFootsteps(AudioClip[] clips, float audioSpeed)
     {
         int r = Random.Range(0, clips.Length);

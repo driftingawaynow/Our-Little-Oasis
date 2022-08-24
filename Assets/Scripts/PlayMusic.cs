@@ -7,20 +7,16 @@ public class PlayMusic : MonoBehaviour
     public AudioSource music;
     private bool fadeOut = false;
     private float timeOut = 0f;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(timeOut);
         if(timeOut > 0f)
         {
             timeOut -= 3f * Time.deltaTime;
         }
+
+        // fade out music if player leaves vicinity of tower
         if(fadeOut)
         {
             if (music.volume <= 0.01f)

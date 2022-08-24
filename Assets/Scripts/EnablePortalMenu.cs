@@ -22,7 +22,8 @@ public class EnablePortalMenu : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
+    /* Update is called once per frame
+    This class is used to separately update the portal on the main menu with the player's progress */
     void Update()
     {
         if(PlayerPrefs.GetInt("WestActive") == 1)

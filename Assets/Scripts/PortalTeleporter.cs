@@ -13,11 +13,6 @@ public class PortalTeleporter : MonoBehaviour
     private float tempZ = 0f;
     private Vector3 portalToPlayer;
     private float timer = 1f;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -26,12 +21,14 @@ public class PortalTeleporter : MonoBehaviour
         {
             playerIsOverlapping = false;
             portalToPlayer = player.position - transform.position;
+
+            // calculate dot product using distance between portal and player
             dotProduct = Vector3.Dot(transform.forward, portalToPlayer);
-            Debug.Log(dotProduct);
-            //Debug.Log(player.position);
             tempX = player.position.x;
             tempY = player.position.y;
             tempZ = player.position.z;
+
+            // check if player is facing correct direction to enter portal
             if(dotProduct > 0f)
             {
                 // Teleport
@@ -46,9 +43,6 @@ public class PortalTeleporter : MonoBehaviour
                 p.y = tempY;
                 p.z = tempZ + 2273f;
                 player.position = p;
-                //Debug.Log(player.position);
-
-                playerIsOverlapping = false;
             }
         }
 
@@ -62,7 +56,6 @@ public class PortalTeleporter : MonoBehaviour
     {
         if(other.tag == "Player" && timer <= 0f) {
             playerIsOverlapping = true;
-            //Debug.Log("Overlap");
         }
     }
 

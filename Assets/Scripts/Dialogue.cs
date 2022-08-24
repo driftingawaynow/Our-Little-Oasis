@@ -23,7 +23,7 @@ public class Dialogue : MonoBehaviour
             if(once)
             {
                 once = false;
-                StartCoroutine(typeLine());
+                StartCoroutine(TypeLine());
             }
         }
     }
@@ -36,8 +36,6 @@ public class Dialogue : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(textComp.text);
-        //Debug.Log(lines[index]);
         if(textComp.text == lines[index])
         {
             timer -= 1f * Time.deltaTime;
@@ -49,9 +47,11 @@ public class Dialogue : MonoBehaviour
         }
     }
 
-    IEnumerator typeLine()
+    /// <summary>
+    /// Types out line of dialogue character by character on a set tick interval
+    /// </summary>
+    IEnumerator TypeLine()
     {
-        //Debug.Log(lines[0].ToCharArray());
         foreach (char c in lines[index].ToCharArray())
         {
             tick.Play();
@@ -61,13 +61,16 @@ public class Dialogue : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Moves to the next line of dialogue. If all lines are finished, moves to main menu
+    /// </summary>
     void NextLine()
     {
         if(index < lines.Length - 1)
         {
             index++;
             textComp.text = string.Empty;
-            StartCoroutine(typeLine());
+            StartCoroutine(TypeLine());
         }
         else
         {
@@ -75,6 +78,9 @@ public class Dialogue : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Moves to the main menu
+    /// </summary>
     IEnumerator MainMenuSwitch()
     {   
         Debug.Log("Entering");

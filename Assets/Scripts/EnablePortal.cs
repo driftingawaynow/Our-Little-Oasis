@@ -36,6 +36,7 @@ public class EnablePortal : MonoBehaviour
         north = PlayerPrefs.GetInt("NorthActive");
         east = PlayerPrefs.GetInt("EastActive");
 
+        // debug command to enable all satellites
         if (Input.GetKeyDown("f1") && (Input.GetKeyDown("e")))
         {
             PlayerPrefs.SetInt("WestActive", 1);
@@ -64,6 +65,7 @@ public class EnablePortal : MonoBehaviour
             audio1.Play();
         }
 
+        // once all satellites are enabled, enable other terrain (helps performance)
         if(west == 1 && north == 1 && east == 1 && playOnce4)
         {
             playOnce4 = false;

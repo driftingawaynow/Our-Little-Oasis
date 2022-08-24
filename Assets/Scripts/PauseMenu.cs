@@ -6,11 +6,6 @@ public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenu;
     public static bool paused = false;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -20,13 +15,17 @@ public class PauseMenu : MonoBehaviour
             if(paused)
             {
                 Resume();
-            } else
+            } 
+            else
             {
                 Pause();
             }
         }
     }
 
+    /// <summary>
+    /// Pause game, disabling flow of time and enabling mouse cursor
+    /// </summary>
     public void Pause()
     {
         paused = true;

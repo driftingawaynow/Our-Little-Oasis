@@ -37,6 +37,7 @@ public class Checkpoint : MonoBehaviour
     {
         if(other.tag == "Player")
         {
+            // set checkpoint
             PlayerPrefs.SetString("Checkpoint", transform.position.ToString());
         }
     }

@@ -1239,7 +1239,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 0e7903942ce075a49b33f4feb566af40, type: 2}
+      objectReference: {fileID: 2100000, guid: 55dd27945d194c74bae02c825f741672, type: 2}
     - target: {fileID: 919132149155446097, guid: 0d9930816b6a14c4b8335fa8cf5a69fe,
         type: 3}
       propertyPath: m_Name
@@ -1277,19 +1277,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 6503316152310639137, guid: 0d9930816b6a14c4b8335fa8cf5a69fe, type: 3}
---- !u!65 &78874706
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 78874701}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.08165766, y: 0.06058699, z: 0.057930153}
-  m_Center: {x: -0.025424872, y: -0.0021322707, z: 0.002783264}
 --- !u!1001 &88427100
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7119,7 +7106,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 5.5
   sprintSpeed: 8
-  slideSpeed: 30
   wallrunSpeed: 0
   speedIncreaseMultiplier: 1.5
   slopeIncreaseMultiplier: 2.5
@@ -7128,11 +7114,8 @@ MonoBehaviour:
   jumpCooldown: 0.5
   airMultiplier: 0.4
   fallMultiplier: 2.5
-  crouchSpeed: 3
-  crouchYScale: 0.5
   jumpKey: 32
   sprintKey: 304
-  crouchKey: 99
   playerHeight: 2
   Ground:
     serializedVersion: 2
@@ -7143,7 +7126,6 @@ MonoBehaviour:
   orientation: {fileID: 1968371611}
   cam: {fileID: 1461550677}
   cam2: {fileID: 22096215}
-  sliding: 0
   wallrunning: 0
 --- !u!114 &157969338
 MonoBehaviour:
@@ -7159,10 +7141,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   orientation: {fileID: 1968371611}
   playerObj: {fileID: 157969334}
+  rb: {fileID: 0}
+  pm: {fileID: 0}
   maxSlideTime: 0.75
   slideForce: 200
+  slideTimer: 0
   slideYScale: 0.5
+  startYScale: 0
   slideKey: 306
+  horizontalInput: 0
+  verticalInput: 0
 --- !u!114 &157969339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7945,7 +7933,17 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: 1280 x 800
       m_Image: {fileID: 0}
+    - m_Text: 1366 x 768
+      m_Image: {fileID: 0}
+    - m_Text: 1440 x 900
+      m_Image: {fileID: 0}
+    - m_Text: 1600 x 900
+      m_Image: {fileID: 0}
     - m_Text: 1920 x 1080
+      m_Image: {fileID: 0}
+    - m_Text: 2560 x 1440
+      m_Image: {fileID: 0}
+    - m_Text: 3840 x 2160
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
@@ -10988,6 +10986,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sens: {fileID: 1811180816}
+  cameraB: {fileID: 22096213}
+  matB: {fileID: 2100000, guid: 556bfd51b5d62064097ab0016899d7d3, type: 2}
 --- !u!114 &410510102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14364,14 +14364,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 589001235}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -13.37, y: -10.1, z: 240.69}
+  m_LocalRotation: {x: -0, y: 0.24840538, z: -0, w: 0.9686562}
+  m_LocalPosition: {x: -24.01, y: -7.64, z: 244.69}
   m_LocalScale: {x: 3.2959785, y: 3.9257, z: 3.0204334}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 813812907}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 28.766, z: 0}
 --- !u!1 &592449116 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 0d9930816b6a14c4b8335fa8cf5a69fe,
@@ -45352,7 +45352,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 55dd27945d194c74bae02c825f741672, type: 2}
+      objectReference: {fileID: 2100000, guid: 0e7903942ce075a49b33f4feb566af40, type: 2}
     - target: {fileID: 919132149155446097, guid: 0d9930816b6a14c4b8335fa8cf5a69fe,
         type: 3}
       propertyPath: m_Name

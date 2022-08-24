@@ -6,6 +6,7 @@ public class PortalTextureSetup : MonoBehaviour
 {
     public Camera cameraB;
     public Material matB;
+    
     // Start is called before the first frame update
     void Start()
     {

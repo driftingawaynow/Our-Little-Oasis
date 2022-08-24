@@ -8,7 +8,6 @@ public class PlayerMovementAdvanced : MonoBehaviour
     private float moveSpeed;
     public float walkSpeed;
     public float sprintSpeed;
-    public float slideSpeed;
     public float wallrunSpeed;
 
     private float desiredMoveSpeed;
@@ -26,15 +25,9 @@ public class PlayerMovementAdvanced : MonoBehaviour
     public float fallMultiplier;
     bool readyToJump;
 
-    [Header("Crouching")]
-    public float crouchSpeed;
-    public float crouchYScale;
-    private float startYScale;
-
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
     public KeyCode sprintKey = KeyCode.LeftShift;
-    public KeyCode crouchKey = KeyCode.LeftControl;
 
     [Header("Ground Check")]
     public float playerHeight;
@@ -65,13 +58,10 @@ public class PlayerMovementAdvanced : MonoBehaviour
     {
         walking,
         sprinting,
-        crouching,
-        sliding,
         wallrunning,
         air
     }
 
-    public bool sliding;
     public bool wallrunning;
 
     private void Start()
@@ -80,8 +70,6 @@ public class PlayerMovementAdvanced : MonoBehaviour
         rb.freezeRotation = true;
 
         readyToJump = true;
-
-        startYScale = transform.localScale.y;
     }
 
     private void Update()
@@ -119,19 +107,6 @@ public class PlayerMovementAdvanced : MonoBehaviour
 
             Invoke(nameof(ResetJump), jumpCooldown);
         }
-
-        // start crouch
-        if (Input.GetKeyDown(crouchKey))
-        {
-            transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);
-            rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
-        }
-
-        // stop crouch
-        if (Input.GetKeyUp(crouchKey))
-        {
-            transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);
-        }
     }
 
     private void StateHandler()
@@ -141,26 +116,6 @@ public class PlayerMovementAdvanced : MonoBehaviour
         { 
             state = MovementState.wallrunning;
             desiredMoveSpeed = wallrunSpeed;
-        }
-        // Mode - Sliding
-        if (sliding)
-        {
-            state = MovementState.sliding;
-
-            if (OnSlope() && rb.velocity.y < 0.1f) {
-                desiredMoveSpeed = slideSpeed;
-                cam.DoTilt(5f);
-                cam2.DoPortalTilt(5f);
-            }
-            else
-                desiredMoveSpeed = sprintSpeed;
-        }
-
-        // Mode - Crouching
-        else if (Input.GetKey(crouchKey))
-        {
-            state = MovementState.crouching;
-            desiredMoveSpeed = crouchSpeed;
         }
 
         // Mode - Sprinting

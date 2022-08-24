@@ -49,11 +49,6 @@ public class WallJump : MonoBehaviour
         StateMachine();
     }
 
-    private void FixedUpdate()
-    {
-
-    }
-
     private void CheckForWall()
     {
         wallRight = Physics.Raycast(transform.position, orientation.right, out rightWallhit, wallCheckDistance, Wall);

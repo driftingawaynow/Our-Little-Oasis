@@ -39,12 +39,6 @@ public class SatelliteActive : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     IEnumerator enableParticles()
     {
         yield return new WaitForSeconds(13);

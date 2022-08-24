@@ -5,8 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    List<int> widths = new List<int>() {568, 960, 1280, 1920}; 
-    List<int> heights = new List<int>() {320, 540, 800, 1080}; 
+    /// <summary>
+    /// Delete all player prefs and load fresh game instance
+    /// </summary>
     public void NewGame()
     {
         PlayerPrefs.DeleteAll();
@@ -23,16 +24,14 @@ public class MainMenu : MonoBehaviour
 
     public void ContinueGame()
     {
+        // If no player prefs exist, starts a new game instead
         if(!PlayerPrefs.HasKey("WestActive"))
         {
             NewGame();
         }
-        SceneManager.LoadScene("Game");
-    }
-
-    public void Options()
-    {
-
+        else {
+            SceneManager.LoadScene("Game");
+        }
     }
 
     public void QuitGame()
@@ -45,11 +44,5 @@ public class MainMenu : MonoBehaviour
     {
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

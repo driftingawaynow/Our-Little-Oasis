@@ -40,6 +40,9 @@ public class PlayerCam : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Set camera field of view
+    /// </summary>
     public void DoFov(float endValue)
     {
         if(!PauseMenu.paused)
@@ -48,6 +51,9 @@ public class PlayerCam : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Set camera tilt (useful for sway when moving)
+    /// </summary>
     public void DoTilt(float zTilt)
     {
         if(!PauseMenu.paused)

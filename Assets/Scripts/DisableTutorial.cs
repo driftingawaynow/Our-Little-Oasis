@@ -13,6 +13,7 @@ public class DisableTutorial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // if one or more satellites are active, disable all tutorial text
         if(PlayerPrefs.GetInt("WestActive") == 1 || PlayerPrefs.GetInt("NorthActive") == 1 || PlayerPrefs.GetInt("EastActive") == 1)
         {
             gameObject.SetActive(false);
