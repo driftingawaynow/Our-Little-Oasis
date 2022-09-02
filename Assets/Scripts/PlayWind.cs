@@ -25,7 +25,7 @@ public class PlayWind : MonoBehaviour
         }
         if(quieter && (wind.volume > 0.01f))
         {
-            wind.volume -= 0.04f * Time.deltaTime;
+            wind.volume -= 0.1f * Time.deltaTime;
         }
     }
 
@@ -35,6 +35,7 @@ public class PlayWind : MonoBehaviour
         {
             louder = false;
             quieter = true;
+            Debug.Log("quieter");
         }
     }
 

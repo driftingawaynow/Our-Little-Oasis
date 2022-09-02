@@ -13,12 +13,17 @@ public class EnablePortalMenu : MonoBehaviour
     public Renderer right;
     public Material mat;
 
-    // Start is called before the first frame update
-    void Start()
+    // Awake is called immediately
+    void Awake()
     {
-        if(!PlayerPrefs.HasKey("EndScreen"))
+        if(!PlayerPrefs.HasKey("FirstTimeSetup"))
         {
+            PlayerPrefs.SetInt("FirstTimeSetup", 1);
             PlayerPrefs.SetInt("EndScreen", 0);
+            PlayerPrefs.SetInt("WestActive", 0);
+            PlayerPrefs.SetInt("NorthActive", 0);
+            PlayerPrefs.SetInt("EastActive", 0);
+            PlayerPrefs.Save();
         }
     }
 

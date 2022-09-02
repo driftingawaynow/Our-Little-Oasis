@@ -14,11 +14,13 @@ public class MainMenu : MonoBehaviour
         PlayerPrefs.SetInt("WestActive", 0);
         PlayerPrefs.SetInt("NorthActive", 0);
         PlayerPrefs.SetInt("EastActive", 0);
+        PlayerPrefs.SetInt("FirstTimeSetup", 1);
         PlayerPrefs.SetFloat("sens", 100);
         PlayerPrefs.SetFloat("musicVolume", 1);
         PlayerPrefs.SetFloat("sfxVolume", 1);
         PlayerPrefs.SetString("Checkpoint", "(0.0, 0.0, 0.0)");
         PlayerPrefs.SetInt("EndScreen", 0);
+        PlayerPrefs.Save();
         SceneManager.LoadScene("Game");
     }
 

@@ -84,9 +84,10 @@ public class Dialogue : MonoBehaviour
     IEnumerator MainMenuSwitch()
     {   
         Debug.Log("Entering");
+        PlayerPrefs.SetInt("EndScreen", 1);
+        PlayerPrefs.Save();
         yield return new WaitForSeconds(5);
         Debug.Log("Exiting");
-        PlayerPrefs.SetInt("EndScreen", 1);
         SceneManager.LoadScene("Menu");
     }
 }

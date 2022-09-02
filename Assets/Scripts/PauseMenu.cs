@@ -5,6 +5,7 @@ using UnityEngine;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenu;
+    public GameObject optionsMenu;
     public static bool paused = false;
 
     // Update is called once per frame
@@ -40,6 +41,7 @@ public class PauseMenu : MonoBehaviour
         Debug.Log("Resume");
         paused = false;
         pauseMenu.SetActive(false);
+        optionsMenu.SetActive(false);
         Time.timeScale = 1f;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;

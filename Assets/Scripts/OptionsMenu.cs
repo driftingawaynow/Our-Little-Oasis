@@ -34,7 +34,7 @@ public class OptionsMenu : MonoBehaviour
 
         // update portal resolution
         cameraB.targetTexture.Release();
-        cameraB.targetTexture = new RenderTexture(Screen.width, Screen.height, 24, RenderTextureFormat.ARGB32, RenderTextureReadWrite.sRGB);
+        cameraB.targetTexture = new RenderTexture(width, height, 24, RenderTextureFormat.ARGB32, RenderTextureReadWrite.sRGB);
         matB.mainTexture = cameraB.targetTexture;
     }
 
