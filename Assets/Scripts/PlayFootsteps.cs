@@ -53,7 +53,7 @@ public class PlayFootsteps : MonoBehaviour
             }
         }
 
-        if(PlayerMovementAdvanced.state.ToString() == "sprinting")
+        if(PlayerMovementAdvanced.state.ToString() == "sprinting" && rb.velocity.magnitude > 2)
         {
             switch(floorTag)
             {
